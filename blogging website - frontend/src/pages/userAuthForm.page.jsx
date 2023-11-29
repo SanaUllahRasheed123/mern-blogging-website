@@ -16,7 +16,7 @@ const UserAuthForm = ({type}) => {
 </h1>
 
 {
-    type != "sing-in" ?
+    type != "sign-in" ?
     
     <InputBox
         name="fullname"

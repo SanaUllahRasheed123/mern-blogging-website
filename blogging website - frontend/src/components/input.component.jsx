@@ -8,7 +8,7 @@ const InputBox = ({name,type,id,value,placeholder,icon}) => {
     <div className='relative w-[100%] mb-4'>
         <input
             name={name}
-            type={type == "password" ? passwordVisible ? "text" : "password" : type}
+            type={type == "password" ? passwordVisible ? "text" : "password" : type }
             placeholder={placeholder}
             defaultValue={value}
             id={id}
