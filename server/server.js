@@ -12,9 +12,16 @@ mongoose.connect(process.env.DB_LOCATION,{
 })
 
 server.post("/signup", (req,res) => {
+    // console.log(req.body)
+    // res.json(req.body)
 
-    console.log(req.body)
-    res.json(req.body)
+    let {fullname,email,password} = req.body;
+
+    //validating the date from frontend
+    if(fullname.length < 3){
+        return res.status(403).json({"error":"Fullname must be at least 3 letters long"})
+    }
+    return res.status(200).json({"status":"okay"})
 })
 
 server.listen(PORT, ()=>{
