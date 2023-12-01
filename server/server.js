@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config'
+import bcrypt from 'bcrypt'
 
 const server = express();
 let PORT = 3000;
@@ -33,6 +34,10 @@ server.post("/signup", (req,res) => {
     if(!passwordRegex.test(password)){
         return res.status(403).json({"error":"Password should be 6 to 20 characters long with a numeric 1 lowercase and 1 uppercase letters"})
     }
+
+    bcrypt.hash(password,10,(err,hashed_password) =>{
+        console.log(hashed_password)
+    })
     return res.status(200).json({"status":"okay"})
 })
 
