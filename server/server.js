@@ -5,6 +5,9 @@ import 'dotenv/config'
 const server = express();
 let PORT = 3000;
 
+let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // regex for email
+let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/; // regex for password
+
 server.use(express.json());
 
 mongoose.connect(process.env.DB_LOCATION,{
@@ -23,6 +26,9 @@ server.post("/signup", (req,res) => {
     }
     if(!email.length){
         return res.status(403).json({"error":"Enter Email "})
+    }
+    if(!emailRegex.test(email)){
+        return res.status(403).json({"error":"Email is Invalid"})
     }
     return res.status(200).json({"status":"okay"})
 })
