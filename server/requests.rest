@@ -11,5 +11,6 @@ Content-Type: application/json
 
 
 {
-    "fullname": "Hello Sana Ullah"
+    "fullname": "Hello Sana Ullah",
+    "email" : ""
 }
