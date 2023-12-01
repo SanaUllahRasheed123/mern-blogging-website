@@ -30,6 +30,9 @@ server.post("/signup", (req,res) => {
     if(!emailRegex.test(email)){
         return res.status(403).json({"error":"Email is Invalid"})
     }
+    if(!passwordRegex.test(password)){
+        return res.status(403).json({"error":"Password should be 6 to 20 characters long with a numeric 1 lowercase and 1 uppercase letters"})
+    }
     return res.status(200).json({"status":"okay"})
 })
 

@@ -12,5 +12,6 @@ Content-Type: application/json
 
 {
     "fullname": "Hello Sana Ullah",
-    "email" : "hello@ad.com"
+    "email" : "hello@ad.com",
+    "password" : "Saba"
 }
