@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config'
 import bcrypt from 'bcrypt'
+import User from './Schema/User.js';
 
 const server = express();
 let PORT = 3000;
@@ -36,9 +37,23 @@ server.post("/signup", (req,res) => {
     }
 
     bcrypt.hash(password,10,(err,hashed_password) =>{
-        console.log(hashed_password)
+        // console.log(hashed_password)
+        let username = email.split("@")[0];
+
+        let user = new User({
+            personal_info : {fullname,email,
+            password:hashed_password,username}
+        })
+
+        user.save().then((u)=> {
+            return res.status(200).json({ user:u})
+        })
+
+        .catch(err => {
+            return res.status(500).json({"error":err.message})
+        })
     })
-    return res.status(200).json({"status":"okay"})
+    // return res.status(200).json({"status":"okay"})
 })
 
 server.listen(PORT, ()=>{
