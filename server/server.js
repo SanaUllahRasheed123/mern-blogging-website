@@ -50,6 +50,10 @@ server.post("/signup", (req,res) => {
         })
 
         .catch(err => {
+                if(err.code == 11000){
+                    return res.status(500).json({"error" : "Emai already exists"})
+                }
+
             return res.status(500).json({"error":err.message})
         })
     })
