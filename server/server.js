@@ -52,7 +52,7 @@ server.post("/signup", (req,res) => {
 
     bcrypt.hash(password,10, async(err,hashed_password) =>{
         // console.log(hashed_password)
-        let username = await generateUsername();
+        let username = await generateUsername(email);
 
         let user = new User({
             personal_info : {fullname,email,
