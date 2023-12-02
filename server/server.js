@@ -23,7 +23,7 @@ const generateUsername = async (email) => {
     let usernameExists = await User.exists({"personal_info.username": username}).then((result)=>result)
 
      
-    usernameExists ? username += nanoid(): "";
+    usernameExists ? username += nanoid():"";
 
     return username;
      
