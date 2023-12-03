@@ -4,6 +4,7 @@ import 'dotenv/config'
 import bcrypt from 'bcrypt'
 import User from './Schema/User.js';
 import { nanoid } from 'nanoid';
+import jwt  from 'jsonwebtoken';
 
 const server = express();
 let PORT = 3000;
@@ -16,6 +17,16 @@ server.use(express.json());
 mongoose.connect(process.env.DB_LOCATION,{
     autoIndex:true
 })
+
+const formatDatatoSend = (user) => {
+    const access_token = jwt.sign({ id:user._id} , process.env.SECRET_ACCESS_KEY)
+    return {
+        access_token,
+        profile_img: user.personal_info.profile_img,
+        username: user.personal_info.username,
+        fullname:user.personal_info.fullname
+    }
+}
 
 const generateUsername = async (email) => {
     let username = email.split("@")[0];
@@ -60,7 +71,7 @@ server.post("/signup", (req,res) => {
         })
 
         user.save().then((u)=> {
-            return res.status(200).json({ user:u})
+            return res.status(200).json(formatDatatoSend(u))
         })
 
         .catch(err => {
