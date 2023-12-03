@@ -23,7 +23,7 @@ const generateUsername = async (email) => {
     let isUsernameNotUnique = await User.exists({"personal_info.username": username}).then((result) => result)
 
      
-    isUsernameNotUnique ? username += nanoid() : "";
+    isUsernameNotUnique ? username += nanoid().substring(0, 5) : "";
 
     return username;
      
