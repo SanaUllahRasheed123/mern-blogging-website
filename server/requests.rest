@@ -11,6 +11,10 @@ Content-Type: application/json
 
 
 {
-       "email" : "basitali@gmail.com",
-    "password" : "Abcd123d"
+    
+       "email" : "sanalahrasheed47@gmail.com",
+    "password" : "Abcd123"
 }
+
+
+//"fullname" : "Sana Ullah",
