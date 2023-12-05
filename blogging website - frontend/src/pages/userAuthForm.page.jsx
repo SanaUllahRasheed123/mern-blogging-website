@@ -7,8 +7,10 @@ import AnimationWrapper from '../common/page-animation'
 
 const UserAuthForm = ({type}) => {
 
-    const handleSubmit = () =>{
-        
+    const handleSubmit = (e) =>{
+
+        e.preventDefault();
+
     }
   return (
     <AnimationWrapper keyValue={type}>
