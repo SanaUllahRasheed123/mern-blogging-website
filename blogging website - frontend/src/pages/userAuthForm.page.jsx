@@ -6,6 +6,10 @@ import {Link} from "react-router-dom"
 import AnimationWrapper from '../common/page-animation'
 
 const UserAuthForm = ({type}) => {
+
+    const handleSubmit = () =>{
+        
+    }
   return (
     <AnimationWrapper keyValue={type}>
         <section className='h-cover flex items-center justify-center'>

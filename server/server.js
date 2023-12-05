@@ -85,39 +85,39 @@ server.post("/signup", (req,res) => {
     // return res.status(200).json({"status":"okay"})
 })
 
-// server.post("/signin", (req, res)=>{
-//     let {email,password} = req.body;
+server.post("/signin", (req, res)=>{
+    let {email,password} = req.body;
 
-//   User.findOne({"personal_info.email" : email})
-//   .then((user)=>{
-//     if(!user){
-//         return res.status(403).json({ "error":"Email not found"});
+  User.findOne({"personal_info.email" : email})
+  .then((user)=>{
+    if(!user){
+        return res.status(403).json({ "error":"Email not found"});
 
-//     }
+    }
 
-//     bcrypt.compare(password, user.personal_info.password, (err,result) => {
+    bcrypt.compare(password, user.personal_info.password, (err,result) => {
 
-//         if(err){
-//             return res.status(403).json({ "error":"Error occured while login please try again "});
-//         }
-//         if(!result){
-//             return res.status(403).json({"error":"Incorrect Password"})
-//         } else {
-//             return res.status(200).json(formatDatatoSend(user))
-//         }
-//     })
+        if(err){
+            return res.status(403).json({ "error":"Error occured while login please try again "});
+        }
+        if(!result){
+            return res.status(403).json({"error":"Incorrect Password"})
+        } else {
+            return res.status(200).json(formatDatatoSend(user))
+        }
+    })
 
-//     // return res.json({"status":"got user document"})
+    // return res.json({"status":"got user document"})
 
 
-//   })
+  })
 
-//   .catch(err =>{
-//     console.log(err.message);
-//     return res.status(500).json({"error":err.message})
-//   })
+  .catch(err =>{
+    console.log(err.message);
+    return res.status(500).json({"error":err.message})
+  })
 
-// })
+})
 
 server.post("/signin",(req, res)=>{
     let {email,password}= req.body;
