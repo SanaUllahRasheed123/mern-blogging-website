@@ -7,15 +7,28 @@ import { Link } from "react-router-dom";
 import AnimationWrapper from "../common/page-animation";
 
 const UserAuthForm = ({ type }) => {
+  const authForm = useRef();
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //formdata
+    let form = new FormData(authForm.current)
+    let formData = {};
+
+    for(let [key,value] of form.entries()){
+      formData[key] = value;
+    }
+
+    console.log(formData);
+  }
   
   return (
     <AnimationWrapper keyValue={type}>
       <section className="h-cover flex items-center justify-center">
         
         
-        <form className="w-[80%] max-w-[400px]">
+        <form ref={authForm} className="w-[80%] max-w-[400px]">
           <h1 className="text-4xl font-gelasio capitalize text-center mb-24">
             {type == "sign-in" ? "Welcome back" : "Join Us Today"}
           </h1>
@@ -48,6 +61,7 @@ const UserAuthForm = ({ type }) => {
           <button
             className="btn-dark center mt-14"
             type="submit"
+            onClick={handleSubmit}
           
           >
             {type.replace("-", " ")}
