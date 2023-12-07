@@ -11,10 +11,11 @@ Content-Type: application/json
 
 
 {
+  
    
-       "email" : "sanadfsjllahrasheed47@gmail.com",
+       "email" : "sanaullahrasheed3@gmail.com",
     "password" : "Abcd123"
 }
 
+#  "fullname" : "Sana Ullah",
 
-//"fullname" : "Sana Ullah",

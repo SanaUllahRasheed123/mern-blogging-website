@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import googleIcon from "../imgs/google.png";
 import InputBox from "../components/input.component";
 
@@ -6,12 +6,30 @@ import InputBox from "../components/input.component";
 import { Link } from "react-router-dom";
 import AnimationWrapper from "../common/page-animation";
 import {Toaster,toast} from 'react-hot-toast';
+import axios from 'axios';
+import { storeInSession } from '../common/session';
+import {UserContext} from '../App';
+import { authWithGoogle } from '../common/firebase';
 
 const UserAuthForm = ({ type }) => {
   const authForm = useRef();
+
+  let { userAuth: { access_token}, setUserAuth} = useContext(UserContext)
   
   const userAuthThroughServer = (serverRoute,formData) => {
 
+
+    console.log(axios.post(import.meta.env.VITE_SERVER_DOMAIN + serverRoute, formData))
+
+
+    axios.post(import.meta.env.VITE_SERVER_DOMAIN + serverRoute, formData)
+    .then(({ data }) =>{
+      console.log(data)
+    })
+    .catch(({ response }) =>{
+      toast.error(response.data.error)
+    })
+  
   }
 
   const handleSubmit = (e) => {
@@ -47,7 +65,6 @@ const UserAuthForm = ({ type }) => {
   }
 
    userAuthThroughServer(serverRoute,formData)
-      axios.post()
   }
   
   return (
