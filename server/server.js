@@ -53,9 +53,11 @@ server.post("/signup", (req,res) => {
     if(fullname.length < 3){
         return res.status(403).json({"error":"Fullname must be at least 3 letters long"})
     }
+    
     if(!email.length){
         return res.status(403).json({"error":"Enter Email "})
     }
+    
     if(!emailRegex.test(email)){
         return res.status(403).json({"error":"Email is Invalid"})
     }
