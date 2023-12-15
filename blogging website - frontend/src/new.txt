@@ -22,7 +22,9 @@ ja ja tur ja
 al done 15 december 2023 
 first paper Data Minin
 2nd paper MAD
-3rd paper ERP
+3rd paper NS
+4th paper ERP
+5th paper AI
 
 
 
