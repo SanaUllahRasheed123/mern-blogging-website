@@ -43,7 +43,7 @@ const UserAuthForm = ({ type }) => {
       formData[key] = value;
   }
 
-        let {fullname,email,password} = formData
+        let {fullname,email,password} = formData;
         //form validation
 
        if(fullname){
