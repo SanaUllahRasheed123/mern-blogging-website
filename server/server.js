@@ -140,7 +140,7 @@ server.post("/signin",(req, res)=>{
 
             }
             if(!result){
-                return res.status(403).json({"error":"Incorrect Password Umar Daraz bhai g"});
+                return res.status(403).json({"error":"Incorrect Password"});
 
             }
             else{
