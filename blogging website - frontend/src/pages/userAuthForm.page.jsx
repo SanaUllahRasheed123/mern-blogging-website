@@ -4,20 +4,24 @@ import InputBox from "../components/input.component";
 
 import { Link } from "react-router-dom";
 import AnimationWrapper from "../common/page-animation";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Toaster, toast } from 'react-hot-toast'
 import axios from 'axios';
 import { storeInSession } from "../common/session";
+import { UserContext } from "../App";
 
 const UserAuthForm = ({ type }) => {
 
-  const authForm = useRef()
+  const authForm = useRef();
+  let { userAuth : { access_token }, setUserAuth} = useContext(UserContext)
+  console.log(access_token);
   const userAuthThroughServer = (serverRoute,formData) => {
     
     axios.post(import.meta.env.VITE_SERVER_DOMAIN + serverRoute , formData)
     .then(({ data })=>{
       storeInSession("user", JSON.stringify(data))
-      console.log(sessionStorage)
+      // console.log(sessionStorage)
+      setUserAuth(data)
     })
     .catch(({ response }) => {
       toast.error(response.data.error)

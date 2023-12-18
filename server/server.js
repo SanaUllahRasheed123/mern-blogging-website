@@ -36,14 +36,14 @@ const generateUsername = async (email) => {
     let isUsernameNotUnique = await User.exists({"personal_info.username": username}).then((result) => result)
 
      
-    isUsernameNotUnique ? username += nanoid().substring(0, 5) : "";
+    isUsernameNotUnique ? username += nanoid().substring(0,5) : "";
 
     return username;
      
     
 }
 
-server.post("/signup", (req,res) => {
+server.post("/signup",(req,res) => {
     // console.log(req.body)
     // res.json(req.body)
 
@@ -123,10 +123,10 @@ server.post("/signup", (req,res) => {
 
 // })
 
-server.post("/signin",(req, res)=>{
+server.post("/signin",(req,res)=>{
     let {email,password}= req.body;
 
-    User.findOne({"personal_info.email":email})
+    User.findone({"personal_info.email":email})
     .then((user)=>{
         if(!user){
             return res.json({ "status":"Email not found" })
