@@ -43,6 +43,14 @@ const Navbar = () => {
           <i className="fi fi-rr-bell text-2xl block mt-1"></i>
               </button>
           </Link>
+
+          <div className="relative">
+            <button className="w-12 h-12 mt-1">
+          <img src={profile_img}
+            className="w-full h-full object-cover rounded-full"
+          />
+            </button>
+          </div>
         </>
         :
         <>
